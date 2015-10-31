@@ -2,10 +2,17 @@
 #Carpeta en donde subiremos los trabajos
 
 
-def lines(nombreArchivo,N):
-    dicc={}
+def buscar(N,dicc):
+    de=N.split()
+    for i in dicc:
+        for j in de:
+            if i==j:
+                print i,dicc[i]
+
+def lines():
+    dicci={}
     try:
-        f = open(nombreArchivo,"r")
+        f = open('elementos.csv',"r")
         l = f.readlines()
         for i in l:
             elem={}
@@ -13,12 +20,14 @@ def lines(nombreArchivo,N):
             b = i.split()
             resto['Nu. Atomico']=b[0]
             resto['Propiedades']=b[4:]
-            resto['nombre']=b[3]
-            dicc[b[1]]=resto
-        #print dicc[N]
-        for i in dicc:
-                if j==dicc['nombre']:
-                    print i,dicc[i]
-
+            elem[b[3]]=resto
+            dicci[b[1]]=elem
+        return dicci
     except:
         return("error")
+
+
+b = raw_input('Escribe una serie de simbolos de elementos ')
+buscar(b,lines())
+
+#------Yashar, muchachos ahi esta ya la funcion que recorre todo el diccionario, si se dan cuenta hay tres diccionarios,      # lo hago para que se les facilite la busqueda de los que les toco, respectivamente, igual si quieren puden modificar la funcion a su conveniencia
